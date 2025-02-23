@@ -8,19 +8,19 @@ app.use(express.json());
 let todos = [];
 
 // Get all todos
-app.get("/todos", (req, res) => {
+app.get("/api/todos", (req, res) => {
   res.json(todos);
 });
 
 // Add a new todo
-app.post("/todos", (req, res) => {
+app.post("/api/todos", (req, res) => {
   const newTodo = req.body;
   todos.push(newTodo);
   res.status(201).json(newTodo);
 });
 
 // Delete a todo by id
-app.delete("/todos/:id", (req, res) => {
+app.delete("/api/todos/:id", (req, res) => {
   const id = parseInt(req.params.id, 10);
   todos = todos.filter((todo) => todo.id !== id);
   res.status(204).send();
